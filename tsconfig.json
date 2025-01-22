@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",  // Set 'src' as the base folder for absolute imports
+    "paths": {
+      "@components/*": ["components/*"],
+      "@Pages/*": ["Pages/*"] ,
+      "@contexts/*": ["contexts/*"] 
+    },
+  
+    "target": "ESNext",              // Ensure the JavaScript target supports modern features
+    "module": "ESNext",              // Use ESNext module system to support import.meta
+    "moduleResolution": "node",      // Ensure proper resolution of modules
+    "strict": true,    
+    "types":["node"],              // Enable strict mode for better type safety
+    "jsx": "react-jsx",              // React JSX support (for React 17+)
+    "esModuleInterop": true,         // Ensure compatibility with non-ESM modules
+    "skipLibCheck": true,            // Skip checking of library files for faster builds
+    "resolveJsonModule": true  
+    
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

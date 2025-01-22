@@ -1,0 +1,59 @@
+version: '3.4'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    volumes:
+       - ./shop.sql:/docker-entrypoint-initdb.d/dump.sql
+       
+    networks:
+      - mynetwork
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - mynetwork
+  app:
+    image: backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: user
+      DB_PASSWORD: userpassword
+      DB_NAME: mydb
+      SECRET: QKOgBojOtlRsxTuKMLGTBxklXbjAsQnC2XHzynvr1JQTDEqbxri56rG7wKIQm+0K
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+  shopjoe:
+    image: shopjoe
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      VITE_API_URL: http://localhost:3000
+    ports:
+      - 5173:5173
+    networks:
+      - mynetwork
+volumes:
+  db_data:
+
+networks:
+  mynetwork:
+    driver: bridge
