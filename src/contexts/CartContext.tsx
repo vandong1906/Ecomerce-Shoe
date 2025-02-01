@@ -98,7 +98,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   };
 
-  // decrease amount
   const decreaseAmount = (id: number) => {
     if (item) {
       const cartItem = item.find((item) => item.product_id === id);

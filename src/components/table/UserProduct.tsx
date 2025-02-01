@@ -1,6 +1,22 @@
 
 import React, { useState } from "react";
 
+const collumns = [{
+    className: "px-16 py-3",title: "Image"
+},
+{
+    className: "px-6 py-3",title: "MaSP"
+},
+{
+    className: "px-6 py-3",title: "Total QTY"
+},
+{
+    className: "px-6 py-3",title: "Total"
+},
+{
+    className: "px-6 py-3",title: "Action"
+},
+]
 const Table = () => {
     const [expandedRow, setExpandedRow] = useState(-1);
     const toggleRowDetails = (index: number) => {
@@ -16,21 +32,11 @@ const Table = () => {
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" className="px-16 py-3">
-                            <span className="sr-only">Image</span>
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            MaSP
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Total QTY
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Total
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Action
-                        </th>
+                        {collumns.map((collumn, index) => (
+                            <th key={index} className={collumn.className}>
+                                {collumn.title}
+                            </th>
+                        ))}
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +60,7 @@ const Table = () => {
                         </td>
                         <td className="px-6 py-4">
                             <button
-                                onClick={() => toggleRowDetails(0)} // Toggle khi nhấn vào nút "Details"
+                                onClick={() => toggleRowDetails(0)} 
                                 className="font-medium text-blue-600 hover:underline"
                             >
                                 Details

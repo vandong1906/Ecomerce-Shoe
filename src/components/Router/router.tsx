@@ -14,6 +14,7 @@ import ProductDetail from "@Pages/ProductDetail/ProductDetails";
 import NavBar from "@components/Navbar/navbar";
 import Footer from "@components/footer/footer";
 import SpeedDial from "@components/speedDial/SpeedDial";
+import ScrollToTop from "./scrollToTop";
 
 function Router() {
     const authContextValue: IAuthContext = useAuthentication();
@@ -50,12 +51,12 @@ function Router() {
         {
             component: <UserProfile/>, path: "/UserProfile"
         }
-        
     ]
     return (
         <>
 
-                <BrowserRouter>
+                <BrowserRouter> 
+                <ScrollToTop/>
                 <NavBar/>   
                     <Routes>
                       

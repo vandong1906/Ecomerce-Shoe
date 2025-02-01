@@ -6,7 +6,8 @@ interface IconButtonProps {
 const IconButton: React.FC<IconButtonProps> = ({ iconPath, label }) => {
   return (
     <>
-      <button
+    <div className="relative">
+    <button
         type="button"
         className="flex h-[52px] w-[52px] items-center justify-center rounded-lg border peer/hover border-gray-200 bg-white text-gray-500 shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-400"
       >
@@ -22,9 +23,11 @@ const IconButton: React.FC<IconButtonProps> = ({ iconPath, label }) => {
       </button>
       <div className="tooltip invisible absolute z-10 inline-block w-auto rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700 group-hover:visible peer-hover/hover:opacity-100">
         {label}
-        <div className="tooltip-arrow" data-popper-arrow></div>
+     
       </div>
 
+    </div>
+  
     </>
   )
 

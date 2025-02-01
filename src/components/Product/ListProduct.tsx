@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 interface ProductProps {
     ProductName: string;
     Number: number;
-
 }
 interface Props {
 

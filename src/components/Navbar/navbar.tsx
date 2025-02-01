@@ -103,14 +103,14 @@ function NavBar() {
                             className="w-52 origin-top-right rounded-xl border border-white/5 bg-black p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 z-40 "
                         >
                             {
-                                true ?
+                                false ?
                                     <>
                                         {NavbarLogin.map((item, index) => (
                                             <div key={index} className="menu-item">
                                                 {item.type === 'link' && item.link ? (
                                                     <Link
                                                         to={item.link}
-                                                        className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10"
+                                                        className={item.className}
                                                     >
                                                         <TrashIcon className="size-4 fill-white/30" />
                                                         {item.title}
@@ -137,7 +137,7 @@ function NavBar() {
                                                 className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10"
                                                 onClick={() => {
                                                     setLogin(!Login);
-                                                    deleteProduct();
+                                                    // deleteProduct();
                                                 }}
                                             >
                                                 <TrashIcon className="size-4 fill-white/30" />
