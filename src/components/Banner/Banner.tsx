@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import myImage from "../../assets/Giay-Nau.webp";
-import myImage1 from "../../assets/image-54-2048x711-2.webp";
+import myImage from "@assets/Giay-Nau.webp";
+import myImage1 from "@assets/image-54-2048x711-2.webp";
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const Banner = () => {
     const images = [

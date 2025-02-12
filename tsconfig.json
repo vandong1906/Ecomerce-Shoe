@@ -4,7 +4,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@Pages/*": ["Pages/*"] ,
-      "@contexts/*": ["contexts/*"] 
+      "@contexts/*": ["contexts/*"],
+      "@assets/*": ["assets/*"] 
     },
   
     "target": "ESNext",              // Ensure the JavaScript target supports modern features

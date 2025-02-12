@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 
-const collumns = [{
+const collumns = [
+    {
     className: "px-16 py-3",title: "Image"
 },
 {

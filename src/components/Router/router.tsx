@@ -5,8 +5,8 @@ import { IAuthContext, useAuthentication} from "@contexts/Authuciance";
 import ManagingProduct from "@components/table/ManagingProduct";
 import UserProduct from "@components/table/UserProduct";
 import UserProfile from "@components/SettingUser/UserProfile";
-import SiderBarMenu from "@components/table/SiderBarMenu";
-import Verify from "@components/Form/Veryfi";
+import SiderBarMenu from "@components/SiderBar/SiderBarMenu";
+import Verify from "@components/Form/Verify";
 import OrderItem from "@components/table/OderItem";
 import ManagingUser from "@components/ManagingUser/ManagingUser";
 import TotalProduct from "@components/Product/TotalProduct";
@@ -15,10 +15,14 @@ import NavBar from "@components/Navbar/navbar";
 import Footer from "@components/footer/footer";
 import SpeedDial from "@components/speedDial/SpeedDial";
 import ScrollToTop from "./scrollToTop";
+import { DashBoard } from "@components/DashBoard/DashBoard";
 
 function Router() {
     const authContextValue: IAuthContext = useAuthentication();
     const publicRouter = [
+        {
+            component: <DashBoard/>, path: "/DashBoard"
+        },
         {
             component: <SiderBarMenu/>, path: "/SiderBarMenu"
         },

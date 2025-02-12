@@ -103,7 +103,7 @@ function NavBar() {
                             className="w-52 origin-top-right rounded-xl border border-white/5 bg-black p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 z-40 "
                         >
                             {
-                                false ?
+                                true ?
                                     <>
                                         {NavbarLogin.map((item, index) => (
                                             <div key={index} className="menu-item">
@@ -117,7 +117,7 @@ function NavBar() {
                                                     </Link>
                                                 ) : (
                                                     <button
-
+                                                    onClick={item.action === 'logout' ? () => authContextValue.handleLogout() : () => { }}
                                                         className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10"
                                                     >
                                                         <TrashIcon className="size-4 fill-white/30" />

@@ -16,7 +16,6 @@ export const AuthenticationProvider: React.FC<AuthProviderProps> = ({ children }
     const [isLogin, setLogin] = useState(false);
     const [user, setUser] = useState(null);
     useEffect(() => {
-        // Cookies.remove('user');
         const storedUser = Cookies.get('user');
         setUser(storedUser ? JSON.parse(storedUser) : null);
         if (storedUser) {
@@ -45,7 +44,6 @@ export const AuthenticationProvider: React.FC<AuthProviderProps> = ({ children }
     );
 };
 
-// Corrected the typo here from `useAuthenciacne` to `useAuthentication`
 export const useAuthentication = (): IAuthContext => {
     const context = useContext(AuthenticationContext);
     if (!context) {

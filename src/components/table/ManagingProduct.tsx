@@ -4,7 +4,7 @@ import CallBrand, { IBrand } from "@components/function/CallBrand";
 import * as React from "react";
 import { IAddProduct, IProduct } from "@components/Types/Product";
 import CallProduct from "@components/function/CallProduct";
-import Alert from "@components/alert/alert";
+
 function ManagingProduct() {
     const [notification, setNotification] = React.useState(false);
     const [alert, setAlert] = React.useState({
@@ -151,7 +151,7 @@ function ManagingProduct() {
                     a number:</label>
                 <input type="number" id="number-input" aria-describedby="helper-text-explanation"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="90210" required value={formdata?.number} name="number"
+                    placeholder="90210" required value={formdata?.number} name="number" min={1}
                     onChange={handleInputChange} />
                 <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                     an option</label>
@@ -274,9 +274,6 @@ function ManagingProduct() {
             </div>
 
         </div>
-        {
-            notification && <Alert message={alert.message} color={alert.color} detail={alert.detail} onClose={handleAlertClose} />
-        }
     </>
 }
 
