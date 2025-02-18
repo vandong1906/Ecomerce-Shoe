@@ -16,25 +16,24 @@ import clsx from "clsx";
 import { Link } from 'react-router-dom';
 import Form from '@components/Form/Form';
 import { IAuthContext, useAuthentication } from "@contexts/Authuciance";
-import CardItem from '@components/function/CardItem';
 import { NavbarLogin, NavbarProperty } from './NavbarProperty';
+import { useCartContext } from '@contexts/CartContext';
 
 function NavBar() {
     const [enabled, setEnabled] = useState(false)
     const [Login, setLogin] = useState(false);
     const [number, setnumber] = useState(0);
-    const { getItem, deleteProduct } = CardItem();
+ 
     const [IsActive, setIsActive] = useState(false);
     React.useEffect(() => {
         window.addEventListener("scroll", () => {
             window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
         });
     });
-    React.useEffect(() => {
-        const items = getItem();
-        setnumber(items?.length || 0);
-    }, [getItem()]);
+  
+    const CartContext = useCartContext();
     const authContextValue: IAuthContext = useAuthentication();
+    console.log(authContextValue.login);
     return <>
         <nav className={clsx('top-0 z-40 h-full transition-all sticky', enabled ? 'bg-white' : 'bg-slate-600', IsActive ? 'bg-white border-b-2 ' : 'bg-slate-600')}>
             <div className="flex justify-around max-md:hidden pc items-center ">
@@ -62,7 +61,7 @@ function NavBar() {
                     <Menu>
                         <MenuButton
                             className="inline-flex items-center gap-2 rounded-md  py-1.5 px-3 text-sm/6 font-semibold focus:outline-none  data-[focus]:outline-1 data-[focus]:outline-white relative">
-                            Shopping Cart<ShoppingCartIcon className="size-5" /> {number} <span
+                            Shopping Cart<ShoppingCartIcon className="size-5" /> {CartContext.getItem()?.length} <span
                                 className='top-0 absolute right-0'></span>
                         </MenuButton>
                         <MenuItems
@@ -103,7 +102,7 @@ function NavBar() {
                             className="w-52 origin-top-right rounded-xl border border-white/5 bg-black p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 z-40 "
                         >
                             {
-                                true ?
+                                authContextValue.login ?
                                     <>
                                         {NavbarLogin.map((item, index) => (
                                             <div key={index} className="menu-item">
@@ -210,7 +209,7 @@ function NavBar() {
         </nav>
         {
 
-            Login && (!authContextValue.login && <Form />)
+            Login && (!authContextValue.login && <Form open={true} onClose={() => setLogin(false)}  />)
         }
     </>
 

@@ -4,6 +4,7 @@ import * as React from 'react';
 import axiosInstance from "@components/CustomAxios/AxiosCustom";
 import { IProduct } from "@components/Types/Product";
 import CardItem from "@components/function/CardItem";
+import { useCartContext } from "@contexts/CartContext";
 
 const ProductDetail = () => {
     const local = useLocation();
@@ -12,7 +13,7 @@ const ProductDetail = () => {
     const [loading, SetLoading] = useState(false);
     const [isnotice, setnotice] = useState(false);
     console.log(param.get('product'));
-    const { setItemProduct } = CardItem();
+const CartContext =useCartContext();
     React.useEffect(() => {
         const handler = async () => {
             try {
@@ -74,8 +75,7 @@ const ProductDetail = () => {
                     <button className="w-full bg-pink-200 text-white py-3 rounded mb-4 hover:bg-pink-500"
                         onClick={() => {
                             if (data != null)
-                                setItemProduct(data);
-                            setnotice(true);
+                                CartContext.setItemCart(data);
                         }}
                     >THÊM VÀO GIỎ HÀNG</button>
                     <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">

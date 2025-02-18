@@ -5,7 +5,8 @@
       "@components/*": ["components/*"],
       "@Pages/*": ["Pages/*"] ,
       "@contexts/*": ["contexts/*"],
-      "@assets/*": ["assets/*"] 
+      "@assets/*": ["assets/*"],
+      "@config/*": ["config/*"] 
     },
   
     "target": "ESNext",              // Ensure the JavaScript target supports modern features

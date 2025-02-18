@@ -11,7 +11,7 @@ interface CartContextType {
   decreaseAmount: (id: number) => void;
 }
 
-export const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext<CartContextType | undefined>(undefined);
 
 interface CartProviderProps {
   children: React.ReactNode;
@@ -38,8 +38,6 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       setTotal(total);
     }
   });
-
-  // update item amount
   useEffect(() => {
     if (item) {
       const amount = item.reduce((accumulator, currentItem) => {
@@ -130,5 +128,11 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
+export const useCartContext = ()=>{
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCartContext must be used within an CartProvider');
+  }
+  return context;
+};
 export default CartProvider;
