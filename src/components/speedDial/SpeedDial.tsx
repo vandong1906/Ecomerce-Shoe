@@ -1,4 +1,4 @@
-import { speedDialButton } from "./speedDialProperty";
+import { speedDialButton } from "./speedDialItems";
 interface IconButtonProps {
   iconPath: string;
   label: string;

@@ -6,7 +6,11 @@
       "@Pages/*": ["Pages/*"] ,
       "@contexts/*": ["contexts/*"],
       "@assets/*": ["assets/*"],
-      "@config/*": ["config/*"] 
+      "@config/*": ["config/*"] ,
+      "@layout/*": ["layout/*"],
+      "@utils/*": ["utils/*"],
+      "@Types/*": ["Types/*"],
+      "@services/*": ["services/*"],
     },
   
     "target": "ESNext",              // Ensure the JavaScript target supports modern features

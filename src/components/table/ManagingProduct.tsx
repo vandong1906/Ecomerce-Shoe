@@ -1,9 +1,9 @@
 
 import { FormEvent, useEffect } from "react";
-import CallBrand, { IBrand } from "@components/function/CallBrand";
+import CallBrand, { IBrand } from "@components/Api/ApiBrand";
 import * as React from "react";
-import { IAddProduct, IProduct } from "@components/Types/Product";
-import CallProduct from "@components/function/CallProduct";
+import { IAddProduct, IProduct } from "Types/Product";
+import CallProduct from "@components/Api/ApiProduct";
 
 function ManagingProduct() {
     const [notification, setNotification] = React.useState(false);

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import * as React from "react";
-import CallUser, { Iregister } from "@components/function/CallUser";
+import CallUser, { Iregister } from "@components/Api/ApiUser";
 import { IAuthContext, useAuthentication } from "@contexts/Authuciance";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -67,6 +67,10 @@ const Form = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
       console.error("Error:", error);
     }
   }
+const onClick = async() => {
+  const user = await loginGoogle();
+  authContextValue.setUser(user);
+};
 
   return (
     <>
@@ -113,7 +117,7 @@ const Form = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
             </button>
             <button
               className={clsx(
-                " py-2 px-4 rounded-r-full",
+                " py-2 px-4 rounded-r-full border-2",
                 !State
                   ? "bg-white text-black"
                   : "bg-gradient-to-r from-blue-500 to-blue-700 text-white"
@@ -190,13 +194,7 @@ const Form = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
             <button
               className=""
               type="button"
-              onClick={() => {
-                const user = loginGoogle();
-                console.log(user);
-                if (user) {
-                  authContextValue.setUser(user);
-                }
-              }}
+              onClick={onClick}
             >
               login google
             </button>

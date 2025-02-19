@@ -1,4 +1,4 @@
-import CardItem from "@components/function/CardItem";
+import CardItem from "@components/Api/CardItem";
 import clsx from "clsx";
 import * as React from "react";
 

@@ -1,21 +1,22 @@
-import Home from "@components/layout/Home";
+import Home from "@Pages/Home/Home";
 import {BrowserRouter,Route, Routes} from "react-router-dom";
 import * as React from 'react';
 import { IAuthContext, useAuthentication} from "@contexts/Authuciance";
 import ManagingProduct from "@components/table/ManagingProduct";
 import UserProduct from "@components/table/UserProduct";
 import UserProfile from "@components/SettingUser/UserProfile";
-import SiderBarMenu from "@components/SiderBar/SiderBarMenu";
-import Verify from "@components/Form/Verify";
+
+import Verify from "@components/Form/VerifyEmail";
 import OrderItem from "@components/table/OderItem";
 import ManagingUser from "@components/ManagingUser/ManagingUser";
-import TotalProduct from "@components/Product/TotalProduct";
-import ProductDetail from "@Pages/ProductDetail/ProductDetails";
-import NavBar from "@components/Navbar/navbar";
-import Footer from "@components/footer/footer";
+import TotalProduct from "@Pages/Product/TotalProduct";
+import ProductDetail from "@Pages/Product/ProductDetails";
 import SpeedDial from "@components/speedDial/SpeedDial";
 import ScrollToTop from "./scrollToTop";
-import { DashBoard } from "@components/DashBoard/DashBoard";
+import { DashBoard } from "@Pages/DashBoard/DashBoard";
+import SiderBarMenu from "@layout/SiderBar/SiderBarMenu";
+import NavBar from "@layout/Navbar/navbar";
+import Footer from "@layout/footer/footer";
 
 function Router() {
     const authContextValue: IAuthContext = useAuthentication();

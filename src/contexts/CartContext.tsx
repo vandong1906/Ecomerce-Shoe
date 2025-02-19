@@ -1,7 +1,7 @@
-import { IOrderItem } from "@components/Types/OrderItem";
+import { IOrderItem } from "Types/OrderItem";
 import React, { createContext, useState, useEffect, useContext } from "react";
 import Cookies from "js-cookie";
-import { IProduct } from "@components/Types/Product";
+import { IProduct } from "Types/Product";
 interface CartContextType {
   getItem: () => IProduct[] | undefined;
   setItemCart: (product: IProduct | IProduct[]) => void;
