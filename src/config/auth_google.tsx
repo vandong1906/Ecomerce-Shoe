@@ -6,10 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-
-// Cấu hình Firebase (dán config từ Firebase Console vào đây)
 const firebaseConfig = {
- 
 };
 
 const app = initializeApp(firebaseConfig);
@@ -21,7 +18,7 @@ export const loginGoogle = async () => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential?.accessToken;
     const user = result.user.displayName;
-    // console.log(user);
+   
     return { user, type: "google" };
   } catch (error) {
     console.error(error);

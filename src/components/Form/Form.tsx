@@ -36,7 +36,7 @@ const Form = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
     console.log(response);
     if (response) {
       authContextValue.setUser(response);
-      console.log(authContextValue.login);
+  
     }
   }
   const validateEmail = (email: string) => {

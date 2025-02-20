@@ -14,7 +14,8 @@ export interface IAuthContext {
 }
 interface user {
     user:string,
-    type:string
+    type:string,
+    role:string
 }
 const AuthenticationContext = createContext<IAuthContext | undefined>(undefined);
 
@@ -36,6 +37,12 @@ export const AuthenticationProvider: React.FC<AuthProviderProps> = ({ children }
         login: isLogin,
         user,
         setUser: (newUser: user) => {
+            if(newUser?.type === 'google'){
+                newUser.role = 'admin';
+            }
+            else {
+                newUser.role = 'user';
+            }
             setUser(newUser);
             Cookies.set('user', JSON.stringify(newUser), { expires: 7 });
             setLogin(true);

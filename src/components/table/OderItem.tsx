@@ -1,4 +1,6 @@
-import CardItem from "@components/Api/CardItem";
+
+import { useCartContext } from "@contexts/CartContext";
+import StripePopup from "@services/Strippe/Strippe";
 import clsx from "clsx";
 import * as React from "react";
 
@@ -9,7 +11,7 @@ function OrderItem() {
   const [noticeError, setnoticeError] = React.useState(false);
   const src =
     "https://product.hstatic.net/1000312752/product/09a661c8a5a5aec10a8fc85c77d6416b069f4b1091662927387f7bb38624078f777ed3_acafc873ad214e18af6e481d53ada1e8.jpg";
-  const { removeProduct, getItem } = CardItem();
+const cartContext=useCartContext();
   const handlerSumit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault;
     if (isChecked) {
@@ -24,7 +26,7 @@ function OrderItem() {
           <h1 className="title text-center font-semibold">Order Item</h1>
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-1">
             <tbody>
-              {getItem()?.map(
+              {cartContext.getItem()?.map(
                 (items) => (
                   console.log(items),
                   (
@@ -64,7 +66,7 @@ function OrderItem() {
                           type="submit"
                           className="font-medium  dark:text-red-500 border-2 p-4 rounded-xl hover:bg-red-400"
                           onClick={() => {
-                            removeProduct(items.product_id);
+                            cartContext.removeFromCart(items.product_id);
                           }}
                         >
                           Remove
@@ -106,7 +108,7 @@ function OrderItem() {
                     type="submit"
                     className="font-medium  dark:text-red-500 border-2 p-4 rounded-xl hover:bg-red-400"
                     onClick={() => {
-                      removeProduct(1);
+                      cartContext.removeFromCart(1);
                     }}
                   >
                     Remove
@@ -174,35 +176,7 @@ function OrderItem() {
             </div>
             {OptionValue == 1 ? (
               <>
-                <div className="mb-5">
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Your email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                    placeholder="name@flowbite.com"
-                    required
-                  />
-                </div>
-                <div className="mb-5">
-                  <label
-                    htmlFor="password"
-                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Your password
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    className="dark:shadow-sm-light block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                    required
-                  />
-                </div>
+              <StripePopup />
               </>
             ) : (
               <></>

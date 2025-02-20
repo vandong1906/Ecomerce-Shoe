@@ -1,6 +1,5 @@
 export const DashBoard = () => {
     return (
-       
             <div className="flex">
                 <div className="top-0 sticky left-0 z-20 h-screen w-full bg-white px-4 shadow-2xl transition-all duration-300 md:w-[35vw] lg:w-[40vw] lg:px-[35px] xl:max-w-[30vw]">
                     <div className="flex items-center justify-between border-b-2 py-6">
