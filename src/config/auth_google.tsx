@@ -7,6 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 const firebaseConfig = {
+
 };
 
 const app = initializeApp(firebaseConfig);
