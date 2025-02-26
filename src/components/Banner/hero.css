@@ -1,0 +1,32 @@
+.list-item1 {
+    position: relative;
+    animation: moveUp 5s infinite;
+  }
+  .list-item2 {
+    position: relative;
+    animation: movedown 5s infinite;
+  }
+  @keyframes movedown {
+    0% {
+      top: 0px;
+    }
+    50% {
+      top: -50px;
+    }
+    100% {
+      top: 0px;
+    }
+  }
+  
+  @keyframes moveUp {
+    0% {
+      top: 0px;
+    }
+    50% {
+      top: 50px;
+    }
+    100% {
+      top: 0px;
+    }
+  }
+  

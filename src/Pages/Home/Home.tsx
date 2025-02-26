@@ -1,4 +1,7 @@
 import Banner from "@components/Banner/Banner";
+import Hero from "@components/Banner/Hero";
+import Footer from "@layout/footer/footer";
+import SiderBarMenu from "@layout/SiderBar/SiderBar";
 import { ListProduct } from "@Pages/Product/ListProduct";
 import React from "react";
 
@@ -25,10 +28,12 @@ const GallaryItems = [
 const Home: React.FC = () => {
   return (
     <>
-      <Banner />
-      <div className="gallery py-4">
+
+    <Hero/>
+
+      <div className="gallery py-4 ">
         <div className="tite-gallery flex justify-center">
-          <h1 className="rounded-md bg-gradient-to-r from-orange-500 to-red-200 p-2">
+          <h1 className="rounded-md uppercase bg-gradient-to-r to-blue-700  from-blue-900 p-2 w-64  text-center">
             Our Gallary
           </h1>
         </div>
@@ -47,6 +52,7 @@ const Home: React.FC = () => {
         </div>
       </div>
       <ListProduct />
+      <Footer />
     </>
   );
 };

@@ -32,7 +32,7 @@ const IconButton: React.FC<IconButtonProps> = ({ iconPath, label }) => {
 const SpeedDial = () => {
   return (
     <>
-      <div className="group fixed bottom-6 end-6">
+      <div className="group fixed bottom-6 end-6 z-50">
         <div className="mb-4 hidden flex-col items-center space-y-2 group-hover:flex">
           {speedDialButton.map((button, index) => (
             <IconButton

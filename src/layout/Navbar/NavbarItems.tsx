@@ -4,12 +4,7 @@
     { title: 'Contact', link: '/contact', className: "text-gray-900 dark:text-white  text-sm/6 font-semibold" },
   ];
 
-export const NavbarLogin = [{
-  title: 'SiderBarMenu',
-  link: '/SiderBarMenu',
-  type: 'link',
-  className: 'group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 hover:bg-white/10'
-},
+export const NavbarLogin = [
 {
   title: 'Setting',
   link: null,
@@ -19,7 +14,7 @@ export const NavbarLogin = [{
 },
 {
   title: 'Managing',
-  link: '/ManagingUser',
+  link: '/user-management',
   type: 'link',
   className: 'group flex w-full items-center gap-2 rounded-lg py-1.5 px-3  hover:bg-white/10 '
 },

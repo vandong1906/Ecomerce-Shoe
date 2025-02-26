@@ -23,102 +23,71 @@ import SiderBarMenu from "@layout/SiderBar/SiderBar";
 import NavBar from "@layout/Navbar/navbar";
 import Footer from "@layout/footer/footer";
 import { DashBoard } from "@Pages/DashBoard/DashBoard";
+interface RouteConfig {
+  path: string;
+  component: React.ReactElement;
+  isPrivate?: boolean;
+  allowedRoles?: string[];
+}
 
 function Router() {
-  const authContextValue: IAuthContext = useAuthentication();
-  const [Loading, setLoading] = React.useState(false);
-  const publicRouter = [
-    {
-      component: <SiderBarMenu />,
-      path: "/SiderBarMenu",
-    },
-    {
-      component: <Home />,
-      path: "/",
-    },
-    {
-      component: <Verify />,
-      path: "/register/verify",
-    },
-    {
-      component: <ProductDetail />,
-      path: "/product",
-    },
-    {
-      component: <TotalProduct />,
-      path: "/totalProduct",
-    },
-    {
-      component: <UserProduct />,
-      path: "/UserProduct",
-    },
-    {
-      component: <ManagingUser />,
-      path: "/ManagingUser",
-    },
-  ];
-  const privateRouter = [
-    {
-      component: <UserProfile />,
-      path: "/UserProfile",
-    },
-    {
-      component: <DashBoard />,
-      path: "/DashBoard",
-    },
+  const authContext = useAuthentication();
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  // Define all routes in a single array for better maintainability
+  const routes: RouteConfig[] = [
+    { path: "/", component: <Home />, isPrivate: false },
+    { path: "/register/verify", component: <Verify />, isPrivate: false },
+    { path: "/product", component: <ProductDetail />, isPrivate: false },
+    { path: "/total-product", component: <TotalProduct />, isPrivate: false },
+    { path: "/user-products", component: <UserProduct />, isPrivate: false }, 
+    { path: "/user-management", component: <ManagingUser />, isPrivate: false },
+    { path: "/user-profile", component: <UserProfile />, isPrivate: true, allowedRoles: ["admin", "user"] },
+    { path: "/dashboard", component: <DashBoard />, isPrivate: true, allowedRoles: ["admin"] },
   ];
 
   React.useEffect(() => {
-    console.log(authContextValue.login);
-    if (authContextValue.login !== undefined) {
-      setLoading(false);
+    if (authContext.login !== undefined) {
+      setIsLoading(false);
     }
-  }, [authContextValue.login]);
+  }, [authContext.login]);
 
-  if (Loading) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <div>is loading ..... </div> // Use a reusable loading component
   }
-  console.log(authContextValue.login);
+
+  const renderRoute = (route: RouteConfig) => {
+    if (route.isPrivate) {
+      if (!authContext.login) {
+        return <Navigate to="/" replace />;
+      }
+      if (route.allowedRoles && !route.allowedRoles.includes(authContext.user?.role || "")) {
+        return <Navigate to="/" replace />;
+      }
+      return route.component;
+    }
+    return route.component;
+  };
 
   return (
-    <>
-      <BrowserRouter>
-        <ScrollToTop />
-        <NavBar />
-        <Routes>
-          {publicRouter.map((router, index) => {
-            return (
-              <Route
-                key={index}
-                element={router.component}
-                path={router.path}
-              />
-            );
-          })}
-
-          {privateRouter.map((router, index) => (
-            <Route
-              key={index}
-              path={router.path}
-              element={
-                authContextValue.login ? (
-                  authContextValue.user?.role === "admin" ? (
-                    router.component
-                  ) : (
-                    <Navigate to="/" />
-                  )
-                ) : (
-                  <div>Loading...</div>
-                )
-              }
-            />
-          ))}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Footer />
-        <SpeedDial />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <ScrollToTop />
+      <NavBar />
+      <SiderBarMenu/>
+     {/* Consider conditional rendering based on route or auth */}
+      <Routes>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            element={renderRoute(route)}
+          />
+        ))}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    
+      <SpeedDial /> {/* Consider conditional rendering based on route or auth */}
+    </BrowserRouter>
   );
 }
 export default Router;

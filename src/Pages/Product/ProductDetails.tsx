@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import * as React from 'react';
 import axiosInstance from "@components/CustomAxios/AxiosCustom";
 import { IProduct } from "Types/Product";
-import CardItem from "@components/Api/CardItem";
 import { useCartContext } from "@contexts/CartContext";
 
 const ProductDetail = () => {
