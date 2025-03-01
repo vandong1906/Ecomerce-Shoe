@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-function TotalProduct() {
+function FillterProduct() {
   const [filters, setFilters] = React.useState({
     category: "",
     priceMin: "",
@@ -140,4 +140,4 @@ function TotalProduct() {
   );
 }
 
-export default TotalProduct;
+export default FillterProduct;

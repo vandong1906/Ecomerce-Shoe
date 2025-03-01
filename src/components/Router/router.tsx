@@ -4,24 +4,20 @@ import {
   Navigate,
   Route,
   Routes,
-  useNavigate,
 } from "react-router-dom";
 import * as React from "react";
 import { IAuthContext, useAuthentication } from "@contexts/Authuciance";
-import ManagingProduct from "@components/table/ManagingProduct";
-import UserProduct from "@components/table/UserProduct";
-import UserProfile from "@components/SettingUser/UserProfile";
+
+import UserProduct from "@components/user/UserProduct";
+import UserProfile from "@components/user/UserProfile";
 
 import Verify from "@components/Form/VerifyEmail";
-import OrderItem from "@components/table/OderItem";
-import ManagingUser from "@components/ManagingUser/ManagingUser";
-import TotalProduct from "@Pages/Product/TotalProduct";
+import ManagingUser from "@components/user/ManagingUser";
+import FillterProduct from "@Pages/Product/FilterProduct";
 import ProductDetail from "@Pages/Product/ProductDetails";
 import SpeedDial from "@components/speedDial/SpeedDial";
 import ScrollToTop from "./scrollToTop";
-import SiderBarMenu from "@layout/SiderBar/SiderBar";
 import NavBar from "@layout/Navbar/navbar";
-import Footer from "@layout/footer/footer";
 import { DashBoard } from "@Pages/DashBoard/DashBoard";
 interface RouteConfig {
   path: string;
@@ -33,13 +29,11 @@ interface RouteConfig {
 function Router() {
   const authContext = useAuthentication();
   const [isLoading, setIsLoading] = React.useState(true);
-
-  // Define all routes in a single array for better maintainability
   const routes: RouteConfig[] = [
     { path: "/", component: <Home />, isPrivate: false },
     { path: "/register/verify", component: <Verify />, isPrivate: false },
     { path: "/product", component: <ProductDetail />, isPrivate: false },
-    { path: "/total-product", component: <TotalProduct />, isPrivate: false },
+    { path: "/total-product", component: <FillterProduct />, isPrivate: false },
     { path: "/user-products", component: <UserProduct />, isPrivate: false }, 
     { path: "/user-management", component: <ManagingUser />, isPrivate: false },
     { path: "/user-profile", component: <UserProfile />, isPrivate: true, allowedRoles: ["admin", "user"] },
@@ -73,7 +67,7 @@ function Router() {
     <BrowserRouter>
       <ScrollToTop />
       <NavBar />
-      <SiderBarMenu/>
+    
      {/* Consider conditional rendering based on route or auth */}
       <Routes>
         {routes.map((route, index) => (
