@@ -1,5 +1,5 @@
 import CallProduct from "@components/Api/ApiProduct";
-
+import './index.css'
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { IProduct } from "@Types/Product";
 import clsx from "clsx";
@@ -45,15 +45,14 @@ export const ListProduct = ({}: Props) => {
             {products?.map((product, index) => (
               <Link
                 key={index}
-                to={clsx("/product?product=" + product.product_id)}
+                to={clsx("/product?product=" + product.id)}
                 className="transition-all m-2 cursor-pointer rounded-sm border text-center duration-200 hover:border-2 hover:shadow-md"
               >
                 <img
                   className="mx-auto h-52 rounded-sm p-2 max-md:w-full"
                   src={
                     import.meta.env.VITE_API_URL +
-                    "/uploads/" +
-                    product.image_data
+                    "/uploads/" 
                   }
                   alt=""
                 />
@@ -62,7 +61,7 @@ export const ListProduct = ({}: Props) => {
                   <p>introduce</p>
                 </div>
                 <div className="">
-                  <button className="m-2 cursor-pointer rounded-sm bg-gradient-to-r from-blue-500 to-blue-600 p-2 transition-all duration-200 hover:scale-110 w-auto">
+                  <button className="m-2 cursor-pointer rounded-sm p-2  hover:scale-110 w-auto slide">
                     Click
                   </button>
                   <button className="m-2 cursor-pointer rounded-sm bg-gradient-to-r from-blue-500 to-blue-600 p-2 transition-all duration-200 hover:scale-110 w-auto">

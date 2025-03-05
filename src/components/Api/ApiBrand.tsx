@@ -6,12 +6,12 @@ export interface IBrand {
 
 function CallBrand(){
     const createBrand =async(brand:IBrand)=>{
-        const response =await  axiosInstance.post("/v1/brand",brand);
+        const response =await  axiosInstance.post("/api/brands",brand);
       
         return response;
     }
     const getBrand = async()=>{
-        const response = await axiosInstance.get("/v1/brand");
+        const response = await axiosInstance.get("/api/brands");
        
         return response.data;
     }

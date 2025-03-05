@@ -2,17 +2,16 @@ import {Isize} from "Types/size";
 
 
 export interface IAddProduct {
-    Product_name: string;
-    number: number;
-    Brand_id: number;
-    description: string;
+    name: string;
+    brand_id: number;
+    description?: string;
+    base_price: number;
 }
 
 export interface IProduct {
-    product_id: number;
-    product_Name: string;
-    price: number;
-    number: number;
-    description: string;
-    image_data: string;
+    id: number;
+    name: string;
+    brand_id: number;
+    description?: string;
+    base_price: number;
 }

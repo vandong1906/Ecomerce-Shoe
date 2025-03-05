@@ -1,7 +1,9 @@
 import Hero from "@components/Banner/Hero";
+import Chatbot from "@components/ChatBot/Chatbot";
 import Footer from "@layout/footer/footer";
 import SiderBarMenu from "@layout/SiderBar/SiderBar";
 import { ListProduct } from "@Pages/Product/ListProduct";
+
 import React, { useState } from "react";
 
 const GallaryItems = [
@@ -64,7 +66,7 @@ const Home: React.FC = () => {
       <Footer />
       {/* Sidebar */}
     
-      
+      {/* <Chatbot /> */}
     </div>
      
   </div>
