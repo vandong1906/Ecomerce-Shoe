@@ -4,6 +4,7 @@ import * as React from "react";
 import axiosInstance from "@components/CustomAxios/AxiosCustom";
 import { IProduct } from "Types/Product";
 import { useCartContext } from "@contexts/CartContext";
+import CallProduct from "@components/Api/ApiProduct";
 
 const ProductDetail = () => {
   const local = useLocation();
@@ -16,19 +17,17 @@ const ProductDetail = () => {
   React.useEffect(() => {
     const handler = async () => {
       try {
-        const response = await axiosInstance.get(
-          import.meta.env.VITE_API_URL +
-            "/v1/product/where/" +
-            param.get("product")
-        );
+       const response =await CallProduct().getProductById(Number(param.get("product")));
         setData(response.data);
         SetLoading(true);
+       
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     handler();
   }, []);
+ 
   return (
     <>
       <div className="p-4 md:p-8">
@@ -52,7 +51,7 @@ const ProductDetail = () => {
             {loading && (
               <img
                 src={
-                  import.meta.env.VITE_API_URL + "/uploads/" + data?.image_data
+                data?.ProductVariants[0]?.image_url
                 }
                 alt="Nike Zoom Vapor Pro 2 HC ‘White’ DR6191-101"
                 className="w-3/4 h-1/2 mb-4"
@@ -84,7 +83,7 @@ const ProductDetail = () => {
           </div>
           <div className="md:w-1/2 md:pl-8">
             <h1 className="text-xl md:text-2xl font-bold mb-2">
-              Giày Nike Zoom Vapor Pro 2 HC ‘White’ DR6191-101
+             {data?.name}
             </h1>
             <p className="text-lg md:text-xl text-red-500 mb-4">
               3,100,000 ₫ – 3,500,000 ₫
@@ -92,24 +91,14 @@ const ProductDetail = () => {
             <div className="mb-4">
               <span className="text-sm text-gray-500">Kích thước</span>
               <div className="mt-2 flex flex-wrap space-x-2">
-                <button className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
-                  40.5
-                </button>
-                <button className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
-                  41
-                </button>
-                <button className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
-                  42
-                </button>
-                <button className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
-                  42.5
-                </button>
-                <button className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
-                  43
-                </button>
-                <button className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
-                  44
-                </button>
+                {
+                  data?.ProductVariants.map((item,index)=>(
+                    <button key={index} className="mb-2 rounded-full border border-gray-300 px-4 py-2 hover:scale-105 hover:bg-blue-500/25">
+                    {item.size}
+                  </button>
+                  ))
+                }
+              
               </div>
             </div>
             <div className="border border-gray-300 p-4 mb-4">

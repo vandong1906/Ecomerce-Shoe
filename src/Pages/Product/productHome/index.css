@@ -1,0 +1,103 @@
+.custom-h {
+    width: auto;
+    height: auto;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:
+      inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+      7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+      4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.header-3 {
+    /* background: rgb(0, 172, 238); */
+    /* background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%); */
+    
+   line-height: 42px;
+    padding: 0;
+    border: none;
+    display: flex; /* Sử dụng flex để căn chỉnh ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    white-space: nowrap; /* Ngăn văn bản xuống dòng */
+}
+
+.header-3 span {
+    position: relative;
+    display: inline-block; /* Đảm bảo span nằm trên cùng dòng */
+    padding:  0 5px; /* Khoảng cách giữa các từ */
+}
+
+.header-3:before,
+.header-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: rgb(170, 87, 31);
+    transition: all 0.3s ease;
+}
+
+.header-3:before {
+    height: 0%;
+    width: 2px;
+}
+
+.header-3:after {
+    width: 0%;
+    height: 2px;
+}
+
+.header-3:hover {
+    background: transparent;
+    box-shadow: none;
+}
+
+.header-3:hover:before {
+    height: 100%;
+}
+
+.header-3:hover:after {
+    width: 100%;
+}
+
+.header-3 span:hover {
+    color: black;
+}
+
+.header-3 span:before,
+.header-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: rgb(170, 87, 31);
+    transition: all 0.3s ease;
+}
+
+.header-3 span:before {
+    width: 2px;
+    height: 0%;
+}
+
+.header-3 span:after {
+    width: 0%;
+    height: 2px;
+}
+
+.header-3 span:hover:before {
+    height: 100%;
+}
+
+.header-3 span:hover:after {
+    width: 100%;
+}

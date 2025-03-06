@@ -116,15 +116,15 @@ function FillterProduct() {
           {products?.map((product, index) => (
             <Link
               key={index}
-              to={clsx("/product?product=" + product.product_id)}
+              to={clsx("/product?product=" + product.id)}
               className="text-center transition duration-0 hover:shadow-2xl hover:duration-700"
             >
               <img
                 className="rounded-t-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0 h-52 w-full"
                 src={
                   import.meta.env.VITE_API_URL +
-                  "/uploads/" +
-                  product.image_data
+                  "/uploads/" 
+             
                 }
                 alt=""
               />

@@ -1,0 +1,19 @@
+# Loại trừ thư mục build/output
+dist/
+out/
+
+# Loại trừ thư mục node_modules
+node_modules/
+
+# Loại trừ file cấu hình môi trường
+.env
+.env.local
+.env.development
+.env.production
+
+# Loại trừ file TypeScript build
+*.tsbuildinfo
+
+# Loại trừ các tệp tạm thời
+*.log
+*.lock

@@ -14,9 +14,9 @@ function ManagingProduct() {
   const [product, setProduct] = React.useState<IProduct[]>();
   const [brands, setBrands] = React.useState<IBrand[]>();
   const [formdata, setFormData] = React.useState<IAddProduct>({
-    Product_name: "",
-    number: 1,
-    Brand_id: 1,
+    name: "",
+    base_price: 0,
+    brand_id: 1,
     description: "",
   });
   const [file, setFile] = React.useState<File[] | null>([]);
@@ -99,7 +99,7 @@ function ManagingProduct() {
               className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               name="Product_name"
-              value={formdata?.Product_name}
+              value={formdata?.name}
               onChange={handleInputChange}
             />
             <label
@@ -220,7 +220,7 @@ function ManagingProduct() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="90210"
             required
-            value={formdata?.number}
+            value={1}
             name="number"
             min={1}
             onChange={handleInputChange}
@@ -234,7 +234,7 @@ function ManagingProduct() {
           <select
             id="countries"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            value={formdata?.Brand_id}
+            value={formdata?.brand_id}
             name="Brand_id"
             onChange={handleSelectChange}
           >
@@ -328,17 +328,17 @@ function ManagingProduct() {
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
-                      {product.product_Name}
+                      {product.name}
                     </th>
                     <td className="px-6 py-4">
                       <img
                         src={
-                          "http://localhost:3000/uploads/" + product.image_data
+                          "http://localhost:3000/uploads/"
                         }
                       />
                     </td>
                     <td className="px-6 py-4">{product.description}</td>
-                    <td className="px-6 py-4">{product.number}</td>
+                    <td className="px-6 py-4">{}</td>
                     <td className="px-6 py-4">
                       <a
                         href="#"
