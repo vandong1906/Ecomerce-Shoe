@@ -29,8 +29,7 @@ export const ListProduct = ({}: Props) => {
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
-  console.log(products);
-  console.log(currentPage);
+
   return (
     <>
       <div className="Items  p-7 m-7">

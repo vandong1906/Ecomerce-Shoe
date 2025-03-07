@@ -16,4 +16,5 @@ export interface IProduct {
     description?: string;
     base_price: number;
     ProductVariants: IProductVariant[];
+    stock:number
 }

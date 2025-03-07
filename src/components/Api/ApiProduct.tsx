@@ -7,7 +7,7 @@ function CallProduct() {
             console.log("Form data being sent:", Product);
 
             // Send the FormData to the server
-            const response = await axios.post("http://localhost:3000/api/products", Product);
+            const response = await axios.post("/api/products", Product);
             //  const response = await axiosInstance.post("/v1/product", Product);
 
             console.log("Response from server:", response);
@@ -18,7 +18,8 @@ function CallProduct() {
         }
     };
     const getProduct = async () => {
-        const response = await axiosInstance.get("http://localhost:3000/api/products");
+        const response = await axiosInstance.post("/api/products");
+        console.log(response)
         return response.data;
 
     }

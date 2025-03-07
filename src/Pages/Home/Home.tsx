@@ -1,7 +1,8 @@
 import Hero from "@components/Banner/Hero";
-import Chatbot from "@components/ChatBot/Chatbot";
+
 import Footer from "@layout/footer/footer";
-import SiderBarMenu from "@layout/SiderBar/SiderBar";
+import NavBar from "@layout/Navbar/navbar";
+
 import { ListProduct } from "@Pages/Product/productHome/ListProduct";
 
 import React, { useState } from "react";
@@ -31,12 +32,9 @@ const Home: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
 
   return <>
+  {/* <NavBar /> */}
   <div className="flex">
-  <div
-      className={`h-full z-50 sticky top-[86px]  left-0 bg-white dark:bg-gray-900 border-0 `}
-    >
-      <SiderBarMenu />
-    </div>
+ 
   <div className="flex flex-col min-h-screen">
       {/* Main content */}
       <div className="flex-1 relative">

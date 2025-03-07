@@ -33,7 +33,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     if (item) {
       const total = item.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.price * currentItem.number
+        return accumulator + currentItem.base_price * currentItem.stock
       }, 0);
       setTotal(total);
     }
@@ -41,7 +41,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   useEffect(() => {
     if (item) {
       const amount = item.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.number;
+        return accumulator + currentItem.stock;
       }, 0);
       setItemAmount(amount);
     }
@@ -57,10 +57,10 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     else {
       setItem((prevState) => {
         if (prevState) {
-          const productIndex = prevState.findIndex((item) => item.product_id === product.product_id);
+          const productIndex = prevState.findIndex((item) => item.id === product.id);
           if (productIndex !== -1) {
             const updatedState = [...prevState];
-            updatedState[productIndex].number += 1;
+            updatedState[productIndex].stock += 1;
             Cookies.set("item", JSON.stringify(updatedState), { expires: 7 });
             return updatedState;
           }
@@ -76,8 +76,8 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const removeFromCart = (id: number) => {
     setItem((prevState) => {
       if (prevState != null) {
-        Cookies.set("item", JSON.stringify(prevState.filter((product) => product.product_id !== id)), { expires: 7 });
-        return prevState.filter((product) => product.product_id !== id);
+        Cookies.set("item", JSON.stringify(prevState.filter((product) => product.id !== id)), { expires: 7 });
+        return prevState.filter((product) => product.id !== id);
       }
     });
   };
@@ -91,25 +91,25 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // increase amount
   const increaseAmount = (id: number) => {
     if (item) {
-      const cartItem = item.find((item) => item.product_id === id);
+      const cartItem = item.find((item) => item.id === id);
       cartItem && setItemCart(cartItem);
     }
   };
 
   const decreaseAmount = (id: number) => {
     if (item) {
-      const cartItem = item.find((item) => item.product_id === id);
+      const cartItem = item.find((item) => item.id === id);
       if (cartItem) {
         const newCart = item.map((item) => {
-          if (item.product_id === id) {
-            return { ...item, number: cartItem.number - 1 };
+          if (item.id === id) {
+            return { ...item, stock: cartItem.stock - 1 };
           } else {
             return item;
           }
         });
         setItemCart(newCart);
       }
-      cartItem && cartItem?.number < 2 && removeFromCart(id);
+      cartItem && cartItem?.stock < 2 && removeFromCart(id);
     }
   };
 

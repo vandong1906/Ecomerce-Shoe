@@ -70,6 +70,7 @@ const Form = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
 const onClick = async() => {
   const user = await loginGoogle();
   authContextValue.setUser(user);
+  onClose();
 };
 
   return (

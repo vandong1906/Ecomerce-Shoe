@@ -7,9 +7,8 @@
 export const NavbarLogin = [
 {
   title: 'Setting',
-  link: null,
-  type: 'button',
-  action: 'openSettings',
+  link: '/user-profile',
+  type: 'link',
   className: 'group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 hover:bg-white/10 '
 },
 {

@@ -46,7 +46,7 @@ export const AuthenticationProvider: React.FC<AuthProviderProps> = ({ children }
             setUser(newUser);
             Cookies.set('user', JSON.stringify(newUser), { expires: 7 });
             setLogin(true);
-            console.log(newUser);
+ 
         },
         handleLogout: () => {
             if(user?.type === 'google'){

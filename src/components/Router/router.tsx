@@ -9,7 +9,7 @@ import * as React from "react";
 import { IAuthContext, useAuthentication } from "@contexts/Authuciance";
 
 import UserProduct from "@components/user/UserProduct";
-import UserProfile from "@components/user/UserProfile";
+import UserProfile from "@components/user/profile/UserProfile";
 
 import Verify from "@components/Form/VerifyEmail";
 import ManagingUser from "@components/user/ManagingUser";
@@ -19,6 +19,8 @@ import SpeedDial from "@components/speedDial/SpeedDial";
 import ScrollToTop from "./scrollToTop";
 import NavBar from "@layout/Navbar/navbar";
 import { DashBoard } from "@Pages/DashBoard/DashBoard";
+import SiderBarMenu from "@layout/SiderBar/SiderBar";
+import ManagingProduct from "@components/table/ManagingProduct";
 interface RouteConfig {
   path: string;
   component: React.ReactElement;
@@ -33,6 +35,7 @@ function Router() {
     { path: "/", component: <Home />, isPrivate: false },
     { path: "/register/verify", component: <Verify />, isPrivate: false },
     { path: "/product", component: <ProductDetail />, isPrivate: false },
+    { path: "/ManagingProduct", component: <ManagingProduct />, isPrivate: false },
     { path: "/total-product", component: <FillterProduct />, isPrivate: false },
     { path: "/user-products", component: <UserProduct />, isPrivate: false }, 
     { path: "/user-management", component: <ManagingUser />, isPrivate: false },
@@ -66,8 +69,8 @@ function Router() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <NavBar />
-    
+   
+    <SiderBarMenu />
      {/* Consider conditional rendering based on route or auth */}
       <Routes>
         {routes.map((route, index) => (
