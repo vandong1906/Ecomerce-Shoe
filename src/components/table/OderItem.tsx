@@ -35,15 +35,15 @@ const cartContext=useCartContext();
                         <img
                           src={
                             import.meta.env.VITE_API_URL +
-                            "/uploads/" +
-                            items?.image_data
+                            "/uploads/" 
+                           
                           }
                           className="w-16 md:w-32 max-w-full max-h-full"
                           alt="Apple Watch"
                         />
                       </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        {items.product_Name}
+                        {items.name}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center">
@@ -59,14 +59,14 @@ const cartContext=useCartContext();
                         </div>
                       </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        {items.price ? items.price : 0}
+                        {items.base_price ? items.base_price : 0}
                       </td>
                       <td className="px-6 py-4">
                         <button
                           type="submit"
                           className="font-medium  dark:text-red-500 border-2 p-4 rounded-xl hover:bg-red-400"
                           onClick={() => {
-                            cartContext.removeFromCart(items.product_id);
+                            cartContext.removeFromCart(items.id);
                           }}
                         >
                           Remove
