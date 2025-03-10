@@ -18,8 +18,8 @@ function CallProduct() {
         }
     };
     const getProduct = async () => {
-        const response = await axiosInstance.post("/api/products");
-        console.log(response)
+        const response = await axiosInstance.get("/api/products");
+        
         return response.data;
 
     }

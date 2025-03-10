@@ -1,6 +1,6 @@
 
 import { useCartContext } from "@contexts/CartContext";
-import StripePopup from "@services/Strippe/Strippe";
+
 import clsx from "clsx";
 import * as React from "react";
 
@@ -8,7 +8,7 @@ function OrderItem() {
   const [OptionValue, setOptionValue] = React.useState(0);
   const [totalPrice, settotalPrice] = React.useState(0);
   const [isChecked, setIsChecked] = React.useState(false);
-  const [noticeError, setnoticeError] = React.useState(false);
+ 
   const src =
     "https://product.hstatic.net/1000312752/product/09a661c8a5a5aec10a8fc85c77d6416b069f4b1091662927387f7bb38624078f777ed3_acafc873ad214e18af6e481d53ada1e8.jpg";
 const cartContext=useCartContext();
@@ -21,21 +21,19 @@ const cartContext=useCartContext();
   const handlerSubmit = () => {};
   return (
     <>
-      <div className="flex justify-around m-9">
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-1/2 ">
+      <div className="w-full h-full mx-auto  my-10 flex border-2 p-6 md:h-[640px] md:w-[1280px] shadow-md sm:rounded-lg  justify-center"> 
+        <div className=" w-full ">
           <h1 className="title text-center font-semibold">Order Item</h1>
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-1">
+          <table className="w-full rounded-lg text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-1 border-spacing-6 ">
             <tbody>
               {cartContext.getItem()?.map(
                 (items) => (
-                  console.log(items),
+                 
                   (
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 w-full">
+                    <tr className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 w-full ">
                       <td className="p-4">
                         <img
-                          src={
-                            import.meta.env.VITE_API_URL +
-                            "/uploads/" 
+                          src={items.description
                            
                           }
                           className="w-16 md:w-32 max-w-full max-h-full"
@@ -118,8 +116,8 @@ const cartContext=useCartContext();
             </tbody>
           </table>
         </div>
-        <div className="FormPayMent w-1/3">
-          <form className="mx-auto max-w-sm" onSubmit={(e) => handlerSumit(e)}>
+        <div className="h-full w-full m-5 ">
+          <form className="w-full   " onSubmit={(e) => handlerSumit(e)}>
             <div className="mb-5">
               <label
                 htmlFor="email"
@@ -176,7 +174,7 @@ const cartContext=useCartContext();
             </div>
             {OptionValue == 1 ? (
               <>
-              <StripePopup />
+          
               </>
             ) : (
               <></>
@@ -210,7 +208,7 @@ const cartContext=useCartContext();
 
             <button
               type="submit"
-              onClick={() => setnoticeError(true)}
+     
               className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Submit for Payment

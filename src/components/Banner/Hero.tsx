@@ -18,7 +18,7 @@ const image = [
 const Hero = () => {
   return (
     <>
-      <section className="h-[900px] bg-hero max-md:h-[700px] max-md:pl-7 bg-no-repeat bg-cover  flex bg-center py-20 gap-2 mr-4 p-7 ">
+      <section className="h-[900px] bg-hero max-md:h-[700px] max-md:pl-7 flex bg-center py-20 gap-2 mr-4 p-7 ">
         <div className="container mx-auto flex justify-around h-full">
           <div className="flex flex-col justify-center">
             <div className="font-semibold flex items-center uppercase">

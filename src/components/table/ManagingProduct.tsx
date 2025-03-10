@@ -1,8 +1,11 @@
 import { FormEvent, useEffect } from "react";
-import CallBrand, { IBrand } from "@components/Api/ApiBrand";
+import CallBrand, {  } from "@components/Api/ApiBrand";
 import * as React from "react";
 import { IAddProduct, IProduct } from "Types/Product";
 import CallProduct from "@components/Api/ApiProduct";
+import { Ibrands } from "@Types/brand";
+import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 function ManagingProduct() {
   const [notification, setNotification] = React.useState(false);
@@ -12,7 +15,7 @@ function ManagingProduct() {
     detail: "You can continue with your work.",
   });
   const [product, setProduct] = React.useState<IProduct[]>();
-  const [brands, setBrands] = React.useState<IBrand[]>();
+  const [brands, setBrands] = React.useState<Ibrands[]>();
   const [formdata, setFormData] = React.useState<IAddProduct>({
     name: "",
     base_price: 0,
@@ -85,9 +88,9 @@ function ManagingProduct() {
 
   return (
     <>
-      <div className="flex mt-16">
+      <div className="flex justify-center my-14 ">
         <form
-          className="w-1/3 mx-auto"
+          className="lg:w-[640px]  "
           onSubmit={(e) => handlerProduct(e)}
           encType="multipart/form-data"
         >
@@ -190,9 +193,9 @@ function ManagingProduct() {
                           className="size-6"
                         >
                           <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </button>
@@ -239,8 +242,9 @@ function ManagingProduct() {
             onChange={handleSelectChange}
           >
             {brands?.map((brand) => (
-              <option key={brand.Brand_id} value={brand.Brand_id}>
-                {brand.Brand_Name}
+              console.log(brand),
+              <option key={brand.id} value={brand.id}>
+                {brand.name}
               </option>
             ))}
           </select>
@@ -266,7 +270,7 @@ function ManagingProduct() {
             className="border-2 rounded-lg hover:shadow-2xl  transition-all active:duration-700 duration-0 hover:scale-105 hover:duration-500 text-center w-full p-3 hover:bg-blue-600 cursor-pointer"
           />
         </form>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-1/2 mx-5">
+        <div className=" shadow-md sm:rounded-lg  mx-5">
           <div className="pb-6 bg-white dark:bg-gray-900">
             <label htmlFor="table-search" className="sr-only">
               Search
@@ -297,7 +301,7 @@ function ManagingProduct() {
               />
             </div>
           </div>
-          <div className="overflow-auto h-full">
+          <div className="">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                 <tr>
@@ -338,14 +342,14 @@ function ManagingProduct() {
                       />
                     </td>
                     <td className="px-6 py-4">{product.description}</td>
-                    <td className="px-6 py-4">{}</td>
+                    <td className="px-6 py-4">{product.stock}</td>
                     <td className="px-6 py-4">
-                      <a
-                        href="#"
+                      <Link
+                        to={clsx('/product?product='+product.id)}
                         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
                         Edit
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -360,12 +364,12 @@ function ManagingProduct() {
                   <td className="px-6 py-4">Laptop</td>
                   <td className="px-6 py-4">$2999</td>
                   <td className="px-6 py-4">
-                    <a
-                      href="#"
+                    <Link
+                      to="#"
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       Edit
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               </tbody>

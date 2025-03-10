@@ -47,7 +47,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   }, [item]);
 
-  // add to cart
+
 
   const setItemCart = (product: IProduct | IProduct[]) => {
     if (Array.isArray(product)) {

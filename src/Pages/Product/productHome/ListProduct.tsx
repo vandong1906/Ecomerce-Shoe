@@ -43,7 +43,6 @@ export const ListProduct = ({}: Props) => {
           <div className="m-4 grid grid-cols-4 gap-4 p-4 max-md:grid-cols-2">
             {products?.map(
               (product, index) => (
-                console.log(product?.ProductVariants[0]?.image_url),
                 (
                   <Link
                     key={index}
@@ -56,8 +55,8 @@ export const ListProduct = ({}: Props) => {
                       alt=""
                     />
                     <div className="py-5">
-                      <h1>Product name</h1>
-                      <p>introduce</p>
+                      <h1>{product.description}</h1>
+                      <p>{product.base_price}</p>
                     </div>
                     <div className="flex justify-center gap-4 m-4">
                       <ButtonComponent

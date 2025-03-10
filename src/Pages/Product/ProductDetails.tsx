@@ -28,10 +28,11 @@ const ProductDetail = () => {
     handler();
   }, []);
  
-  return (
+  return (   
     <>
-      <div className="p-4 md:p-8">
-        <nav className="text-sm text-gray-500 mb-4">
+        <div className=" p-4 md:p-8 my-11 mx-auto flex justify-center">
+          <div className="  md:w-[640px]">
+          <nav className="text-sm text-gray-500 mb-4 w-full">
           <a href="#" className="hover:underline">
             Nike Court
           </a>{" "}
@@ -46,8 +47,6 @@ const ProductDetail = () => {
             Nike Zoom Vapor
           </a>
         </nav>
-        <div className="md:flex">
-          <div className="md:w-1/2">
             {loading && (
               <img
                 src={
@@ -81,7 +80,7 @@ const ProductDetail = () => {
               />
             </div>
           </div>
-          <div className="md:w-1/2 md:pl-8">
+          <div className=" md:w-[640px] md:pl-8">
             <h1 className="text-xl md:text-2xl font-bold mb-2">
              {data?.name}
             </h1>
@@ -165,7 +164,6 @@ const ProductDetail = () => {
             </ul>
           </div>
         </div>
-      </div>
     </>
   );
 };

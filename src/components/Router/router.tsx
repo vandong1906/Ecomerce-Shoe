@@ -8,11 +8,11 @@ import {
 import * as React from "react";
 import { IAuthContext, useAuthentication } from "@contexts/Authuciance";
 
-import UserProduct from "@components/user/UserProduct";
+
 import UserProfile from "@components/user/profile/UserProfile";
 
 import Verify from "@components/Form/VerifyEmail";
-import ManagingUser from "@components/user/ManagingUser";
+
 import FillterProduct from "@Pages/Product/FilterProduct";
 import ProductDetail from "@Pages/Product/ProductDetails";
 import SpeedDial from "@components/speedDial/SpeedDial";
@@ -21,6 +21,8 @@ import NavBar from "@layout/Navbar/navbar";
 import { DashBoard } from "@Pages/DashBoard/DashBoard";
 import SiderBarMenu from "@layout/SiderBar/SiderBar";
 import ManagingProduct from "@components/table/ManagingProduct";
+import OrderItem from "@components/table/OderItem";
+import UserBilling from "@components/user/UserBilling";
 interface RouteConfig {
   path: string;
   component: React.ReactElement;
@@ -36,9 +38,9 @@ function Router() {
     { path: "/register/verify", component: <Verify />, isPrivate: false },
     { path: "/product", component: <ProductDetail />, isPrivate: false },
     { path: "/ManagingProduct", component: <ManagingProduct />, isPrivate: false },
-    { path: "/total-product", component: <FillterProduct />, isPrivate: false },
-    { path: "/user-products", component: <UserProduct />, isPrivate: false }, 
-    { path: "/user-management", component: <ManagingUser />, isPrivate: false },
+    { path: "/Fillter-Product", component: <FillterProduct />, isPrivate: false },
+    { path: "/user-billing", component: <UserBilling/>, isPrivate: false }, 
+    { path: "/user-management", component: <OrderItem />, isPrivate: false },
     { path: "/user-profile", component: <UserProfile />, isPrivate: true, allowedRoles: ["admin", "user"] },
     { path: "/dashboard", component: <DashBoard />, isPrivate: true, allowedRoles: ["admin"] },
   ];
@@ -68,8 +70,8 @@ function Router() {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
-   
+     
+
     <SiderBarMenu />
      {/* Consider conditional rendering based on route or auth */}
       <Routes>
