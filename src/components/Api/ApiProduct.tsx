@@ -24,13 +24,13 @@ function CallProduct() {
 
     }
     const getProductById = async (id:number) => {
-        const response = await axiosInstance.get(import.meta.env.VITE_API_URL + "/api/products/" + id);
+        const response = await axiosInstance.get("/api/products/" + id);
         return response;
 
     }
 
     const getPagnigationProduct = async (page: number, size: number) => {
-        const response = await axiosInstance.get(import.meta.env.VITE_API_URL + "/api/products/getPaginatedProducts?" + 'page=' + page + '&' + 'size=' + size);
+        const response = await axiosInstance.get( "/api/products/getPaginatedProducts?" + 'page=' + page + '&' + 'size=' + size);
       
         return response.data;
     }
