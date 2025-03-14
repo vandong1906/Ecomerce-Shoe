@@ -41,12 +41,7 @@ export const SiderBarProperty = [
       className: "text-gray-900 dark:text-white"
     },
     
-    {
-      title: "Products",
-      link: "/products",
-      icon: "box",
-      className: "text-gray-900 dark:text-white"
-    },
+ 
     
   ];
   

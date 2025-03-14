@@ -9,6 +9,7 @@ interface CartContextType {
   deleteAllCart: () => void;
   increaseAmount: (id: number) => void;
   decreaseAmount: (id: number) => void;
+  totalPrice:()=>number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -88,7 +89,9 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     return item;
   }
 
-  // increase amount
+  const totalPrice = ()=>{
+    return total;
+  }
   const increaseAmount = (id: number) => {
     if (item) {
       const cartItem = item.find((item) => item.id === id);
@@ -122,6 +125,7 @@ const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         deleteAllCart,
         increaseAmount,
         decreaseAmount,
+        totalPrice
       }}
     >
       {children}

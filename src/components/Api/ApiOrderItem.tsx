@@ -1,5 +1,5 @@
 import axiosInstance from '@components/CustomAxios/AxiosCustom';
-import { IOrderItem } from 'Types/OrderItem';
+import { IOrderItem } from '@Types/OrderItem';
 
 interface OrderItem extends IOrderItem {}
 

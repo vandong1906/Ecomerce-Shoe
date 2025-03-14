@@ -21,7 +21,7 @@ import NavBar from "@layout/Navbar/navbar";
 import { DashBoard } from "@Pages/DashBoard/DashBoard";
 import SiderBarMenu from "@layout/SiderBar/SiderBar";
 import ManagingProduct from "@components/table/ManagingProduct";
-import OrderItem from "@components/table/OderItem";
+import OrderItem from "@components/user/OderItem";
 import UserBilling from "@components/user/UserBilling";
 interface RouteConfig {
   path: string;
